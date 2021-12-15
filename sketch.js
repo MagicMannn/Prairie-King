@@ -901,9 +901,9 @@ function killEnemy(collector, collected)
       countE += 2;
     }
 
-  var index = int(random(1,20));
+  var index = int(random(1,30));
   var lifeIndex = int(random(1, 100));
-  var coffeeIndex = int(random(1, 20));
+  var coffeeIndex = int(random(1, 25));
   var coinIndex = int(random(1,15));
   if (index == 1)
   {
