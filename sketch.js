@@ -376,11 +376,17 @@ function drawLevel()
           {
             countE = 0;
           }
+          if (countE <= 100)
+          {
+            spawnRate = 45;
+          }
+          else
+          {
+            spawnRate = 30;
+          }
 
-
-          spawnRate = 45
           enemySpd = 4.6
-        }
+      }
 
 
 }
