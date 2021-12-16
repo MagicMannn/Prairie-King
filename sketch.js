@@ -96,12 +96,14 @@ function draw()
   background(220);
 
   drawLevel();
+  //checks if the person is on the menue then if they are runs the title screen function
   if (onMenu == true && screenDrawn == false)
     {
       startScreen();
     }
 
   drawSprites();
+  //displays info like life count and coins
   if (infoDrawn == false)
   {
     infoDisplay();
