@@ -215,6 +215,7 @@ function startScreen()
 
 
 }
+// checks if the enemy counter has reached zero and if you are on levels 1 - 5
 function checkWin()
 {
   if (level < 6 && countE <= 0)
@@ -266,12 +267,12 @@ function checkWin()
   }
 
 
-
+//checks the level and changes the spawnrate of the enemies according to the difficulty i want
 function drawLevel()
 {
   if (level == 0)
   {
-
+    //draws the ground sprite and the bushes
     if (borderDrawn == false)
       {
         drawGrass();
@@ -286,6 +287,7 @@ function drawLevel()
 
     spawnRate = 90
   }
+  //this is the level that represents the game over state 
   else if (level == -1)
   {
     for (var i = 0; i < enemies.length-1; i++)
@@ -392,6 +394,7 @@ function drawLevel()
 
 
 }
+//resets all of the variables that make the game run
 function resetGame()
 {
   borderDrawn = true;
@@ -416,16 +419,6 @@ function resetGame()
 function runGame()
 {
 
-
-  // if (borderDrawn == false)
-  //   {
-  //     drawGrass();
-  //     drawBorder();
-  //
-  //
-  //
-  //   }
-
   checkWin();
   movePlayer();
   shootGun();
@@ -437,7 +430,7 @@ function runGame()
 
 
 }
-
+//checks if the player is on the menu then if they press space starts the game 
 function keyPressed()
 {
   if (keyCode === 32 && onMenu == true)
@@ -448,13 +441,9 @@ function keyPressed()
     onMenu = false;
     title.remove();
   }
-  if (keyCode === 187)
-  {
-    countE = 2;
-
-  }
 
 }
+//sets the level to the level representing the game over state and removes the player
 function gameOver()
 {
   if (lives <= 0)
@@ -472,13 +461,14 @@ function gameOver()
 
     }
     level = -1;
-    // clearSprites();
+
 
 
 
 
   }
 }
+//clears all sprites of the group specified (sometimes works)
 function clearSprites(group)
 {
   for(var i = 0; i < group.length; i++)
@@ -612,7 +602,7 @@ function shootGun()
     }
   }
 }
-//allows the shotgun to work
+//allows the shotgun to work (creates bullets at the diagonals of the direction the player is facing)
 function shotGun(velX, velY, spawnX, spawnY, velX2, velY2, spawnX2, spawnY2)
 {
   var bulletUL;
@@ -637,7 +627,7 @@ function shotGun(velX, velY, spawnX, spawnY, velX2, velY2, spawnX2, spawnY2)
 
 }
 
-//draws all of the sprites necessary for the border
+//draws all of the sprites necessary for the border (ignore this part it is just the same code repeated a lot)
 function drawBorder()
   {
     var bush = createSprite(35, 35);
@@ -1091,7 +1081,6 @@ function spawnEnemies()
   {
     for(var i = 0; i < enemies.length; i++)
     {
-      //enemies[i].attractionPoint(0.2, player.position.x, player.position.y);
       enemies.displace(enemies);
       enemies[i].velocity.x = (player.position.x-enemies[i].position.x) / 20;
       enemies[i].velocity.y = (player.position.y-enemies[i].position.y) / 20;
@@ -1106,12 +1095,3 @@ function spawnEnemies()
 
 //debug stuff
 
-function mousePressed()
-{
-
-
-
-  // console.log(mouseX, mouseY);
-  lives+= 4000000000;
-
-}
